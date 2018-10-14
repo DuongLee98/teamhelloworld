@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="@dimen/dp250"
+        android:layout_height="@dimen/dp250"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp8"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/user"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp200"
+            android:scaleType="fitXY"
+            android:src="@drawable/user"
+            android:text="name" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp40"
+            android:textAllCaps="true"
+            android:textSize="@dimen/dp20" />
+    </LinearLayout>
+
+    <ImageButton
+        android:onClick="clickQR"
+        android:id="@+id/QRcode"
+        android:layout_width="@dimen/dp250"
+        android:layout_height="@dimen/dp250"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp8"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ll"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:layout_width="@dimen/dp400"
+        android:layout_height="@dimen/dp400"
+        android:layout_marginBottom="@dimen/dp8"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp25"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/QRcode"
+        app:layout_constraintVertical_bias="0.635"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp200"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lquet"
+                android:layout_width="@dimen/dp200"
+                android:layout_height="@dimen/dp200"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:background="#e1d0d0"
+                tools:ignore="MissingConstraints">
+
+                <ImageButton
+                    android:id="@+id/quet"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp150"
+                    android:onClick="scan"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/scan"
+                    android:text="quét mã" />
+
+                <TextView
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:layout_gravity="center"
+                    android:text="Quét Mã"
+                    android:textAllCaps="true"
+                    android:textColor="#000"
+                    android:textSize="@dimen/dp20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lpay"
+                android:layout_width="@dimen/dp200"
+                android:layout_height="@dimen/dp200"
+                android:layout_weight="1"
+                android:background="#e1d0d0"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <ImageButton
+                    android:id="@+id/pay"
+                    android:layout_width="@dimen/dp200"
+                    android:layout_height="@dimen/dp150"
+                    android:layout_gravity="start"
+                    android:onClick="pay"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/pay" />
+
+                <TextView
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:text="Thanh toán"
+                    android:textAllCaps="true"
+                    android:textColor="#000"
+                    android:textSize="@dimen/dp20" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp200">
+
+            <LinearLayout
+                android:id="@+id/lquan"
+                android:layout_width="@dimen/dp200"
+                android:layout_height="@dimen/dp200"
+                android:layout_weight="1"
+                android:background="#e1d0d0"
+                android:orientation="vertical"
+                tools:ignore="MissingConstraints">
+
+                <ImageButton
+                    android:id="@+id/quanli"
+                    android:layout_width="@dimen/dp200"
+                    android:layout_height="@dimen/dp150"
+                    android:onClick="infor"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/quanli" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:text="Quản lý"
+                    android:textAllCaps="true"
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:textColor="#000"
+                    android:textSize="@dimen/dp20" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lxuat"
+                android:layout_width="@dimen/dp200"
+                android:layout_height="@dimen/dp200"
+                android:background="#e1d0d0"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/out"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp150"
+                    android:onClick="sign_out"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/out" />
+
+                <TextView
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp50"
+                    android:text="Đăng xuất"
+                    android:textAllCaps="true"
+                    android:textColor="#000"
+                    android:textSize="@dimen/dp20" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

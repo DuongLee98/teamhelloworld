@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.thant.demo_youngtion">
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Pay_activity">
+
+        </activity>
+        <activity android:name=".Scanner"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".Pay_activity"
+            tools:replace="screenOrientation">
+        </activity>
+        <activity android:name=".CreateQr">
+            android:parentActivityName=".Pay_activity"
+        </activity>
+        <activity android:name=".Đang_ki"
+            android:parentActivityName=".Pay_activity">
+        </activity>
+        <activity android:name=".them.Click_QR"
+            android:parentActivityName=".Pay_activity">
+
+        </activity>
+        <activity android:name=".them.Infor"
+            android:parentActivityName=".Pay_activity">
+
+        </activity>
+
+    </application>
+
+</manifest>

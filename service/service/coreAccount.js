@@ -1,0 +1,261 @@
+const config = require('../config/apiconfig');
+
+let api = new config.InfinitoApi(config.apiConfig);
+let wallet = new config.EthWallet(config.walletConfig);
+wallet.setApi(api);
+let coinAPI = api.ETH;
+
+const contractAdd = '0xd9a0b3007d7c241ec65fc1b3abb46506d992e292';
+const abi =
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_user",
+				"type": "string"
+			},
+			{
+				"name": "_pass",
+				"type": "string"
+			},
+			{
+				"name": "_phone",
+				"type": "string"
+			}
+		],
+		"name": "addAccount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "x",
+				"type": "string"
+			}
+		],
+		"name": "checkHasuser",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_user",
+				"type": "string"
+			}
+		],
+		"name": "getPassword",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_user",
+				"type": "string"
+			}
+		],
+		"name": "getPhone",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "getSizeusers",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "i",
+				"type": "uint256"
+			}
+		],
+		"name": "getUser",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+
+const data = '0x608060405234801561001057600080fd5b50610820806100206000396000f3006080604052600436106100775763ffffffff7c010000000000000000000000000000000000000000000000000000000060003504166301b8c31c811461007c578063319946ac1461014a5780636bd3fdbd146101b7578063b0467deb14610210578063bb346fe314610228578063fde2ef2b146102f0575b600080fd5b34801561008857600080fd5b506040805160206004803580820135601f81018490048402850184019095528484526100d59436949293602493928401919081908401838280828437509497506103179650505050505050565b6040805160208082528351818301528351919283929083019185019080838360005b8381101561010f5781810151838201526020016100f7565b50505050905090810190601f16801561013c5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34801561015657600080fd5b506040805160206004803580820135601f81018490048402850184019095528484526101a39436949293602493928401919081908401838280828437509497506104309650505050505050565b604080519115158252519081900360200190f35b3480156101c357600080fd5b506040805160206004803580820135601f81018490048402850184019095528484526100d594369492936024939284019190819084018382808284375094975061049b9650505050505050565b34801561021c57600080fd5b506100d56004356104f2565b6040805160206004803580820135601f81018490048402850184019095528484526101a394369492936024939284019190819084018382808284375050604080516020601f89358b018035918201839004830284018301909452808352979a99988101979196509182019450925082915084018382808284375050604080516020601f89358b018035918201839004830284018301909452808352979a9998810197919650918201945092508291508401838280828437509497506105879650505050505050565b3480156102fc57600080fd5b50610305610755565b60408051918252519081900360200190f35b606061032282610430565b151561033d575060408051602081019091526000815261042b565b6000826040518082805190602001908083835b6020831061036f5780518252601f199092019160209182019101610350565b518151600019602094850361010090810a820192831692199390931691909117909252949092019687526040805197889003820188208054601f60026001831615909802909501169590950492830182900482028801820190528187529294509250508301828280156104235780601f106103f857610100808354040283529160200191610423565b820191906000526020600020905b81548152906001019060200180831161040657829003601f168201915b505050505090505b919050565b60006002826040518082805190602001908083835b602083106104645780518252601f199092019160209182019101610445565b51815160209384036101000a600019018019909216911617905292019485525060405193849003019092205460ff16949350505050565b60606104a682610430565b15156104c1575060408051602081019091526000815261042b565b6001826040518082805190602001908083836020831061036f5780518252601f199092019160209182019101610350565b60606000821015801561050b5750600354600019018211155b151561051657600080fd5b600380548390811061052457fe5b600091825260209182902001805460408051601f60026000196101006001871615020190941693909304928301859004850281018501909152818152928301828280156104235780601f106103f857610100808354040283529160200191610423565b600061059284610430565b1515600114156105a45750600061074e565b826000856040518082805190602001908083835b602083106105d75780518252601f1990920191602091820191016105b8565b51815160209384036101000a60001901801990921691161790529201948552506040519384900381019093208451610618959194919091019250905061075c565b50816001856040518082805190602001908083835b6020831061064c5780518252601f19909201916020918201910161062d565b51815160209384036101000a6000190180199092169116179052920194855250604051938490038101909320845161068d959194919091019250905061075c565b5060016002856040518082805190602001908083835b602083106106c25780518252601f1990920191602091820191016106a3565b51815160209384036101000a6000190180199092169116179052920194855250604051938490038101909320805460ff1916941515949094179093555060038054600181018083556000929092528751919350610747927fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b909101919088019061075c565b5050600190505b9392505050565b6003545b90565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061079d57805160ff19168380011785556107ca565b828001600101855582156107ca579182015b828111156107ca5782518255916020019190600101906107af565b506107d69291506107da565b5090565b61075991905b808211156107d657600081556001016107e05600a165627a7a72305820799a49583b9ec0d23f2d988b20929c7151ba3cfea2e61d04d7af301ccbf18dab0029';
+const bounty = new config.web3.eth.Contract(abi, contractAdd);
+bounty.options.from = '0x03c33d697509f0eb46844063e27bf079cb973bdd';
+bounty.options.gas = 4700000;
+bounty.options.data = data;
+
+function addAccount(_user, _pass, _phone)
+{
+	return new Promise(function(resolve, reject)
+	{
+		function checktransaction(data)
+		{
+			coinAPI.getTxInfo(data.tx_id).then(function(transactions){
+				if (transactions.cd == "1")
+				{
+					return resolve(false);
+				}
+				else if (transactions.data.transactions.length == 0)
+				{
+					return checktransaction(data);
+				}
+				else
+				{
+					return resolve(true);
+				}
+			});
+		}
+		let txParams = {};
+		txParams.sc = {}; 
+		txParams.sc.contractAddress = contractAdd;
+		txParams.sc.nameFunc = 'addAccount';
+		txParams.sc.typeParams = ['string', 'string', 'string'];
+		txParams.sc.paramsFuncs = [_user, _pass, _phone];
+		wallet.createRawTx(txParams).then(function(rawTx){
+			return wallet.send({
+				rawTx: rawTx,
+				isBroadCast: true
+			});
+		}).then(function(data){
+			return checktransaction(data);	
+		});
+	});
+}
+
+function getPassword(_user)
+{
+	return new Promise(function(resolve, reject){
+		bounty.methods.getPassword(_user).call().then(function(data){
+			return resolve(data);
+		});
+	});
+}
+
+function getPhone(_user)
+{
+	return new Promise(function(resolve, reject){
+		bounty.methods.getPhone(_user).call().then(function(data){
+			return resolve(data);
+		});
+	});
+}
+
+function getSizeusers()
+{
+	return new Promise(function(resolve, reject){
+		bounty.methods.getSizeusers().call().then(function(data){
+			return resolve(data);
+		});
+	});
+}
+
+function getUser(_i)
+{
+	return new Promise(function(resolve, reject){
+		bounty.methods.getUser(_i).call().then(function(data){
+			return resolve(data);
+		});
+	});
+}
+
+function checkHasuser(_user)
+{
+	return new Promise(function(resolve, reject){
+		bounty.methods.checkHasuser(_user).call().then(function(data){
+			return resolve(data);
+		});
+	});
+}
+
+function getAllUser()
+{
+	return new Promise(function(resolve, reject) {
+		var arr = [];
+		var end = false;
+		function getUser(i)
+		{
+			if (i>=0)
+			{
+				bounty.methods.getUser(i).call().then(function(re){
+					arr.push(re);
+					getUser(i-1);
+				});
+			}
+			else
+			{
+				end = true;
+				return resolve(arr);
+			}
+		}
+		bounty.methods.getSizeusers().call().then(function(re){
+			getUser(re-1);
+		});
+	});
+}
+
+// addAccount("hungkhanh", "123", "0123456789").then(console.log);
+// checkHasuser("duonglee").then(console.log);
+// getPassword("123").then(console.log);
+// getPhone("123").then(console.log);
+// getSizeusers().then(console.log);
+// getUser(0).then(console.log);
+// getAllUser().then(console.log);
+
+module.exports =
+{
+	addAccount: addAccount,
+	checkHasuser: checkHasuser,
+	getPassword: getPassword,
+	getPhone: getPhone,
+	getSizeusers: getSizeusers,
+	getUser: getUser
+}

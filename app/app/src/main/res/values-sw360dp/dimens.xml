@@ -1,0 +1,22 @@
+<resources>
+<!--Defaultscreenmargins,pertheAndroidDesignguidelines.-->
+<dimen name="dp50">37.5dp</dimen>
+<dimen name="dp250">187.5dp</dimen>
+<dimen name="dp8">6.0dp</dimen>
+<dimen name="dp120">90.0dp</dimen>
+<dimen name="dp28">21.0dp</dimen>
+<dimen name="dp128">96.0dp</dimen>
+<dimen name="dp80">60.0dp</dimen>
+<dimen name="dp300">225.0dp</dimen>
+<dimen name="dp200">150.0dp</dimen>
+<dimen name="dp150">112.5dp</dimen>
+<dimen name="dp110">82.5dp</dimen>
+<dimen name="dp40">30.0dp</dimen>
+<dimen name="dp100">75.0dp</dimen>
+<dimen name="dp20">15.0dp</dimen>
+<dimen name="dp25">18.75dp</dimen>
+<dimen name="dp400">300.0dp</dimen>
+<dimen name="dp180">135.0dp</dimen>
+<dimen name="dp10">7.5dp</dimen>
+
+</resources>

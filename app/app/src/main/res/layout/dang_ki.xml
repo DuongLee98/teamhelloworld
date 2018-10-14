@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+
+        android:id="@+id/taikhoan"
+        android:layout_width="@dimen/dp250"
+        android:layout_height="@dimen/dp50"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp100"
+        android:background="@drawable/vien_trong"
+        android:hint="nhập tài khoản"
+        android:textColorHint="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:background="@drawable/vien_trong"
+        android:id="@+id/matkhau"
+        android:layout_width="@dimen/dp250"
+        android:layout_height="@dimen/dp50"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp8"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginStart="@dimen/dp8"
+        android:layout_marginTop="@dimen/dp20"
+        android:hint="nhập mật khẩu"
+        android:textColorHint="#000"
+        app:layout_constraintBottom_toTopOf="@+id/sdt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taikhoan" />
+
+    <EditText
+        android:id="@+id/sdt"
+        android:layout_width="@dimen/dp250"
+        android:layout_height="@dimen/dp50"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp250"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginStart="@dimen/dp8"
+        android:background="@drawable/vien_trong"
+        android:hint="nhập số điện thoại"
+        android:textColorHint="#000"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="@dimen/dp150"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dp110"
+        android:layout_marginEnd="@dimen/dp8"
+        android:layout_marginStart="@dimen/dp8"
+        android:background="@drawable/vien_trong"
+        android:onClick="create"
+        android:text="Đăng kí"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
